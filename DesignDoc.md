@@ -43,12 +43,16 @@ DBには別の方法でアクセス
 ### 試したいこと
 * 自動テスト
 * React Hooks
-* typescript gRPC
+* typescript <s> gRPC </s>
 * google vision API
 * github projects
 
 ### 採用
-試したいこと全部採用
+gRPCはVision APIになかったので、なしだが、
+それ以外は試したいこと全部採用
+
+### その他検討
+AWSにもtextractというAPIがあるが、pythonしかコードサンプルがないので、とりあえず無視する。一方で、OCRの結果をweb上でGUIで確認して、exportしたりもできるので、Vision APIがわからなければスイッチもあり。値段は、月100円いかない。Vision APIの方はある程度まで無料
 # detail
 ## 格納するデータ
 ### 必須項目
@@ -79,9 +83,33 @@ localhostにサーバーを立てておき、画像を受け取る。
 画像の保存形式：
 
 ### 4保存されている画像をAPIに送る
-画像をロードしてきて、gRPCでGoogle Vision APIを叩く
+画像をロードしてきて、<s>gRPCで</s>Google Vision APIを叩く
 送って結果を受け取る部分は単一モジュールとして切り出し、もし自前でOCRモデルを立てたら挿げ替えられるようにする
 requestの形式：
+画像はBase64でエンコードして送る
+画像ファイルサイズ：20MB上限
+JSON リクエスト オブジェクト サイズ: 10 MB上限
+Base64でエンコードすると、サイズが大きくなる（こおが多い）。サイズがoverする場合、アップロードしてからURLを送るなど、対応が必要
+https://cloud.google.com/vision/docs/ocr?hl=ja#vision_text_detection-drest
+
+```
+const vision = require('@google-cloud/vision');
+
+// Creates a client
+const client = new vision.ImageAnnotatorClient();
+
+/**
+ * TODO(developer): Uncomment the following line before running the sample.
+ */
+// const fileName = 'Local image file, e.g. /path/to/image.png';
+
+// Performs text detection on the local file
+const [result] = await client.textDetection(fileName);
+const detections = result.textAnnotations;
+console.log('Text:');
+detections.forEach(text => console.log(text));
+```
+[GitHub](https://github.com/googleapis/nodejs-vision/blob/master/samples/detect.js)
 
 ### 5結果を受け取ってparseする
 APIが上手く結果を返してきたか判定
