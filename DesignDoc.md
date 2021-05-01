@@ -122,8 +122,8 @@ csvの扱い：ライブラリor自分でparse
 
 # schedule
 2021.5 GW
-5/1 design doc作成
-5/2 gRPC使い方確認 Vision API
+5/1 design doc作成 画像用意
+5/2 Vision API
 5/3 Vision API  サーバー立てる
 5/4 react hooks 使い方確認
 5/5 アップロード
