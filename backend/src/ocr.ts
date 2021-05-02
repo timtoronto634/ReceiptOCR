@@ -1,22 +1,21 @@
+import fs from 'fs';
 import { requestGoogleVisionAPI } from './requests';
 
 // do ocr
 
-const getResponse = (imageBase64: string): object => {
-    // trigger API
-    const response: object = requestGoogleVisionAPI(imageBase64);
-    return response;
-}
+export const triggerOcr = (base64ImagePath: string): object => {   
+    const imageBase64 = fs.readFileSync(base64ImagePath, 'utf8');
 
-export const triggerOcr = (imagePath: string): object => {   
     // get image from imagePath
-    const imageBase64 = imagePath;
-    const response: object = getResponse(imageBase64);
+    const response: object = requestGoogleVisionAPI(imageBase64);
+    console.log(response);
     const result = response;
-    return response;
+    return result;
 }
 
-
+export const handleHttpRequest = (base64ImagePath: string) => {
+    triggerOcr(base64ImagePath)   
+}
 
 
 

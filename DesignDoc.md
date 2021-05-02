@@ -83,6 +83,13 @@ react のカメラにアクセスするコンポーネントを使って、画�
 localhostにサーバーを立てておき、画像を受け取る。
 ローカルに画像を保存する
 サーバー：
+* express ([qiitaやってみた](https://qiita.com/pochopocho13/items/79a4735031ce11a91df7#express%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86)、 [公式document](https://expressjs.com/ja/))
+* NextJS ([marble.jsとの比較](https://dev.classmethod.jp/articles/typescript-nestjs-marblejs/))
+* fastify ([やってみた](https://zenn.dev/rithmety/articles/20201102-nodejs-web-server-with-typescript))
+* [NextJS + express ](https://www.forcia.com/blog/001559.html)
+
+swaggerも使えそう
+
 画像の保存形式：
 
 ### 4保存されている画像をAPIに送る
