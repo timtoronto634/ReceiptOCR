@@ -1,0 +1,13 @@
+version: "3"
+
+services: 
+    frontend:
+        build: ./frontend
+        volumes:
+            - ./db:/etc/db
+    
+    backend:
+        build: ./backend
+        volumes:
+            - ./db:/etc/db
+    
