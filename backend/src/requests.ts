@@ -1,7 +1,8 @@
-import { vision } from '@google-cloud/vision';
+import fs from 'fs';
+import vision from '@google-cloud/vision';
 // send image to Vision API
 
-export const requestGoogleVisionAPI = (image: string): object =>  {
+export const requestGoogleVisionAPI = async (image: string): Promise<object> =>  {
 
     // Creates a client
     const client = new vision.ImageAnnotatorClient();
@@ -14,6 +15,8 @@ export const requestGoogleVisionAPI = (image: string): object =>  {
 
     // Performs text detection on the local file
     const [result] = await client.textDetection(fileName);
+    console.log("result is: ", console.log(result))
+    fs.writeFileSync('result_saved.json', JSON.stringify(result));
     const detections = result.textAnnotations;
     console.log('Text:');
     detections.forEach(text => console.log(text));
