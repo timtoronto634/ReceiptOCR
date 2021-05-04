@@ -1,10 +1,10 @@
 version: "3"
 
 services: 
-    frontend:
-        build: ./frontend
-        volumes:
-            - ./db:/etc/db
+    # frontend:
+    #     build: ./frontend
+    #     volumes:
+    #         - ./db:/etc/db
     
     backend:
         build: ./backend
