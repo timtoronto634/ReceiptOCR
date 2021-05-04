@@ -1,6 +1,5 @@
 import fs from "fs";
 import vision from "@google-cloud/vision";
-// send image to Vision API
 
 export const requestGoogleVisionAPI = async (
   image: string
