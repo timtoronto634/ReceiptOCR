@@ -1,24 +1,17 @@
-import { handleHttpRequest } from "./ocr";
-import * as fs from "fs";
+import { triggerOcr } from "./ocr";
 
-const main = () => {
-  const convertedImageFolderPath = "../../images/converteds/";
+const main = (): void => {
+  const originalImageFolderPath = "../images/originals/";
   const sampleRequest = {
     data: {
       name: "mybasket_black_bkgr",
       image: "base64image",
     },
-  };
-  const requestData = sampleRequest;
+  }; // TODO remove this sample
+  const requestData = sampleRequest; // TODO do sth for requested data
   const imageName = requestData.data.name;
-  const imageCvtName = imageName + "_cvt";
-  const imageCvtPath = convertedImageFolderPath + imageCvtName;
-  if (!fs.existsSync(imageCvtPath)) {
-    // save base64 image
-    fs.writeFileSync(imageCvtPath, requestData.data.image);
-  }
-  const result = handleHttpRequest(imageCvtPath);
-  console.log("result ======", result);
+  const result = triggerOcr(originalImageFolderPath + imageName);
+  console.log(result);
   return;
 };
 
