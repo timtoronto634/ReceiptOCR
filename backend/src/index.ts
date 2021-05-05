@@ -9,8 +9,8 @@ const main = (): void => {
     },
   }; // TODO remove this sample
   const requestData = sampleRequest; // TODO do sth for requested data
-  const imageName = requestData.data.name;
-  const result = triggerOcr(originalImageFolderPath + imageName);
+  const imageName: string = requestData.data.name;
+  const result: string[] = triggerOcr(originalImageFolderPath + imageName);
   console.log(result);
   return;
 };

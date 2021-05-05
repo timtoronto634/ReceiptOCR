@@ -1,9 +1,11 @@
 import fs from "fs";
 import vision from "@google-cloud/vision";
+// import type IAnnotateImageResponse from "@google-cloud/vision";
+import type { ApiVisionResponse } from "./apitypes";
 
 export const requestGoogleVisionAPI = async (
   imagepath: string
-): Promise<object> => {
+): Promise<ApiVisionResponse> => {
   const client = new vision.ImageAnnotatorClient();
   const fileName = imagepath; // TODO do sth if needed
   // Performs text detection on the local file
