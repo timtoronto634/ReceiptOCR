@@ -13,8 +13,4 @@ export const triggerOcr = (imagePath: string): object => {
   return result;
 };
 
-export const handleHttpRequest = (imagePath: string) => {
-  triggerOcr(imagePath);
-};
-
 // write here if you have your own OCR engine
